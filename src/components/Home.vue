@@ -4,9 +4,9 @@
       <v-layout row wrap>
         <v-flex xs12 sm12 style="text-align: center;">
             <v-progress-circular v-if="operation" indeterminate color="green">File Uploading...</v-progress-circular>
-            <v-btn raised dark class="blue lighten-1" @click="onPickFile" :disabled="operation">Upload Image</v-btn>
-            <input type="file" 
-            style="display:none" 
+            <v-btn raised dark class="blue lighten-1" @click="onPickFile" :disabled="operation">Upload NFO</v-btn>
+            <input type="file"
+            style="display:none"
             ref="fileInput"
             accept="text/plain"
             @change="onFilePicked"
@@ -66,7 +66,7 @@ export default {
     uploadOnServer() {
       this.operation = true;
       const filename = this.testFile.name;
-      const file = filename.split(".txt")[0] + "_" + new Date().getTime();
+      const file = filename.split(".txt")[0];
       const ext = filename.slice(filename.lastIndexOf("."));
       firebase
         .storage()
