@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout row wrap>
-        <v-flex xs12 sm12 style="text-align: center;">
+        <v-flex xs12 sm12 style="text-align: center; margin-bottom:25px">
             <v-progress-circular v-if="operation" indeterminate color="green">File Uploading...</v-progress-circular>
             <v-btn raised dark class="blue lighten-1" @click="onPickFile" :disabled="operation">Upload NFO</v-btn>
             <input type="file"
@@ -12,9 +12,9 @@
             @change="onFilePicked"
             />
           </v-flex>
-          <v-flex xs12 sm12>
-            <v-layout row wrap>
-              <v-flex xs12 sm3 v-for="item in fileList" :key="item.name" style="margin-bottom: 2px;">
+          <v-flex>
+            <v-layout row wrap align-center>
+              <v-flex xs12 v-for="item in fileList" :key="item.name" style="margin: 0px 15% 15px 15%">
                 <v-card>
                   <v-card-title primary-title>{{item.name}}
                    </v-card-title>
@@ -34,7 +34,8 @@ export default {
     return {
       testFile: "",
       operation: false,
-      fileList: ""
+      fileList: "",
+      drawer: true
     };
   },
   mounted() {
