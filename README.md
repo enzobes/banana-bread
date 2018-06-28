@@ -8,6 +8,10 @@
 # install dependencies
 npm install
 
+#Provide you firebase config in main.js under config varibale
+    let config = {
+        #you configuration
+    }
 # serve with hot reload at localhost:8080
 npm run dev
 
