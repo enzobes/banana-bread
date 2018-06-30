@@ -40,6 +40,8 @@
             <v-list-tile-title>Settings</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
@@ -47,6 +49,9 @@
 
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn  v-show="isHidden" @click="logout(); isHidden = false" flat>Logout</v-btn>
+      </v-toolbar-items>
 
     </v-toolbar>
     <v-content>
@@ -58,12 +63,27 @@
   </v-app>
 </template>
 <script>
+  import firebase from 'firebase'
   export default {
     data: () => ({
       title: 'Banana Bread',
-
+      isHidden: firebase.auth().currentUser,
       drawer: true
     }),
+    methods: {
+
+
+
+      logout() {
+
+        this.isHidden = false
+
+        firebase.auth().signOut().then(() => {
+          this.$router.replace('login')
+        })
+      },
+
+    },
     props: {
       source: String
     },

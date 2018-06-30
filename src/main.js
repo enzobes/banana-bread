@@ -5,6 +5,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import firebase from 'firebase'
 
+let app;
 const config = {
   apiKey: "AIzaSyApJwpo63b_fj_ibC_01JeUaPprWdsxTvc",
   authDomain: "enzobes-74279.firebaseapp.com",
@@ -17,9 +18,13 @@ Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 firebase.initializeApp(config)
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  render: h => h(App)
-})
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!app) {
+    app = new Vue({
+        el: '#app',
+        router,
+        componets: { App },
+        render: h => h(App)
+    })
+  }
+});

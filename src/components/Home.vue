@@ -34,8 +34,7 @@ export default {
     return {
       testFile: "",
       operation: false,
-      fileList: "",
-      drawer: true
+      fileList: ""
     };
   },
   mounted() {
@@ -55,16 +54,33 @@ export default {
       this.$refs.fileInput.click();
     },
     onFilePicked(event) {
-      let files = event.target.files;
-      let fileName = files[0].name;
-      if (fileName.lastIndexOf(".") <= 0 || fileName.indexOf(".txt") < 0) {
-        return alert("Please add valid text file");
-      }
-      this.testFile = files[0];
-      this.uploadOnServer();
-      // console.log(files[0].split(".txt"));
-    },
-    uploadOnServer() {
+         var ref = firebase.database().ref("files");
+         let files = event.target.files;
+         let fileName = files[0].name;
+         if (fileName.lastIndexOf(".") <= 0 || fileName.indexOf(".txt") < 0) {
+           return alert("Please add valid text file");
+         }
+         var valeur = 0;
+         ref.once('value', function(snapshot) {
+           const fileExist = snapshot.exists();
+           if (fileExist) {
+             valeur = 1
+           }
+
+         });
+        if (valeur == 1){
+        alert("Cet NFO existe déjà");
+        }else{
+
+         this.testFile = files[0];
+         this.uploadOnServer();
+         }
+         // console.log(files[0].split(".txt"));
+       },
+
+
+
+      uploadOnServer() {
       this.operation = true;
       const filename = this.testFile.name;
       const file = filename.split(".txt")[0];
