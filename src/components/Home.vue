@@ -2,16 +2,6 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout row wrap>
-        <v-flex xs12 sm12 style="text-align: center; margin-bottom:25px">
-            <v-progress-circular v-if="operation" indeterminate color="green">File Uploading...</v-progress-circular>
-            <v-btn raised dark class="blue lighten-1" @click="onPickFile" :disabled="operation">Upload NFO</v-btn>
-            <input type="file"
-            style="display:none"
-            ref="fileInput"
-            accept="text/plain"
-            @change="onFilePicked"
-            />
-          </v-flex>
           <v-flex>
             <v-layout row wrap align-center>
               <v-flex xs12 v-for="item in fileList" :key="item.name" style="margin: 0px 15% 15px 15%">
@@ -50,35 +40,6 @@ export default {
       });
   },
   methods: {
-    onPickFile() {
-      this.$refs.fileInput.click();
-    },
-    onFilePicked(event) {
-         var ref = firebase.database().ref("files");
-         let files = event.target.files;
-         let fileName = files[0].name;
-         if (fileName.lastIndexOf(".") <= 0 || fileName.indexOf(".txt") < 0) {
-           return alert("Please add valid text file");
-         }
-         var valeur = 0;
-         ref.once('value', function(snapshot) {
-           const fileExist = snapshot.exists();
-           if (fileExist) {
-             valeur = 1
-           }
-
-         });
-        if (valeur == 1){
-        alert("Cet NFO existe déjà");
-        }else{
-
-         this.testFile = files[0];
-         this.uploadOnServer();
-         }
-         // console.log(files[0].split(".txt"));
-       },
-
-
 
       uploadOnServer() {
       this.operation = true;

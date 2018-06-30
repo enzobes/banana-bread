@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
+import Upload from '@/components/Upload'
 
 import firebase from 'firebase'
 
@@ -22,6 +23,14 @@ let router = new Router({
       path: '/home',
       name: 'Home',
       component: Home,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: Upload,
       meta: {
         requiresAuth: true
       }
