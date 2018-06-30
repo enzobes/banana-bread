@@ -1,0 +1,41 @@
+
+.login{
+  margin-top: 40px;
+}
+
+input {
+  margin: 10px 0;
+  width: 20%;
+  margin-left: 20px;
+  padding:15px;
+}
+
+button {
+  margin-top: 20px;
+  width: 10%;
+  cursor: pointer;
+}
+
+p {
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+span {
+  display: block;
+  margin-top:10px;
+  margin-left: 5px;
+}
+
+a {
+  color:#58B0F6;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.title{
+  font-size: 42px !important;
+  text-align: center;
+  margin-top:15%;
+  margin-bottom: 3%;
+}

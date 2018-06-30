@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-  <h2 class="title">Banana Breed</h2>
+  <h2 class="title">Login - Banana Breed</h2>
   <v-layout flex align-center justify-center>
     <v-flex xs6 sm2>
       <v-card>
@@ -30,6 +30,8 @@
           <v-btn raised dark class="blue lighten-1" :disabled="!valid" @click="signIn">Submit</v-btn>
           <v-btn raised dark class="blue lighten-1" @click="clear">Clear</v-btn>
         </v-card-actions>
+        <span>Ou créez en un<router-link to="/sign-up"> ici</router-link>.</span>
+
       </v-card>
     </v-flex>
   </v-layout>
@@ -73,10 +75,5 @@ export default {
 }
 </script>
 <style scoped>
-.title{
-  font-size: 42px !important;
-  text-align: center;
-  margin-top:15%;
-  margin-bottom: 3%;
-}
+
 </style>

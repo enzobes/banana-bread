@@ -4,6 +4,7 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import firebase from 'firebase'
+require('./assets/css/custom.css');
 
 let app;
 const config = {
