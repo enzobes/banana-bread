@@ -1,20 +1,26 @@
 <template>
   <v-container fluid>
-    <v-slide-y-transition mode="out-in">
-      <v-layout row wrap>
-          <v-flex>
-            <v-layout row wrap align-center>
-              <v-flex xs12 v-for="item in fileList" :key="item.name" style="margin: 0px 15% 15px 15%">
-                <v-card>
-                  <v-card-title primary-title>{{item.name}}
-                   </v-card-title>
-                </v-card>
-              </v-flex>
-            </v-layout>
-          </v-flex>
-      </v-layout>
-    </v-slide-y-transition>
-  </v-container>
+    <v-layout flex align-center justify-center>
+      <table>
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Upload Date</th>
+          <th>Name</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in fileList" style="margin: 0px 15% 15px 15%">
+          <td>{{item.section}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.team}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </v-layout>
+</v-container>
 </template>
 
 <script>
@@ -24,7 +30,8 @@ export default {
     return {
       testFile: "",
       operation: false,
-      fileList: ""
+      fileList: "",
+
     };
   },
   mounted() {

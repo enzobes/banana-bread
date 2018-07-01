@@ -7,7 +7,7 @@
       app
     >
       <v-list dense>
-        <v-list-tile @click="">
+        <v-list-tile :to="{name:'Home'}" >
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
@@ -15,6 +15,7 @@
             <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon>search</v-icon>
@@ -23,21 +24,21 @@
             <v-list-tile-title>Search</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="">
+        <v-list-tile :to="{name:'Upload'}">
           <v-list-tile-action>
-            <v-icon>cloud_upload
-</v-icon>
+            <v-icon>cloud_upload</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Upload</v-list-tile-title>
+            <v-list-tile-title href="/upload">Upload</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Settings</v-list-tile-title>
+            <v-list-tile-title>Mon Compte</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 

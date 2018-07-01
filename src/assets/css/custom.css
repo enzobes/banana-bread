@@ -39,3 +39,37 @@ a {
   margin-top:15%;
   margin-bottom: 3%;
 }
+body {
+  font-family: Helvetica Neue, Arial, sans-serif;
+  font-size: 14px;
+  color: #444;
+}
+
+table {
+  border: 1px solid #58B0F6;
+  border-radius: 3px;
+  background-color: #fff;;
+}
+
+th {
+  background-color: #58B0F6;
+  color: #fff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+td {
+  background-color: #303030;
+}
+
+th, td {
+  min-width: 120px;
+  padding: 10px 20px;
+}
+
+th.active {
+  color: #303030;
+}

@@ -41,7 +41,7 @@ export default {
       this.$refs.fileInput.click();
     },
     onFilePicked(event) {
-         var ref = firebase.database().ref("files");
+         var ref = firebase.database().ref("files/name");
          let files = event.target.files;
          let fileName = files[0].name;
          if (fileName.lastIndexOf(".") <= 0 || fileName.indexOf(".nfo") < 0) {
@@ -49,15 +49,16 @@ export default {
          }
          var valeur = false;
          ref.once("value", function(snapshot) {
-           var b = snapshot.child("name").exists(); // true
-           alert(b)
-           if (b) {
-             alert("Cet NFO existe déjà");
+           var a = snapshot.child("name").exists(); // true
+           alert(a)
+           if (a) {
              valeur = true
            }
 
          });
         if (valeur == true){
+          alert("Cet NFO existe déjà");
+
           return -1;
         }else{
 
@@ -72,8 +73,14 @@ export default {
       uploadOnServer() {
       this.operation = true;
       const filename = this.testFile.name;
-      const file = filename.split(".nfo")[0];
-      const ext = filename.slice(filename.lastIndexOf("."));
+      const file = filename.split(".nfo")[0]; //For.A.Few.Dollars.More.1965.MULTi.1080p.BluRay.x264-FHD
+      const ext = filename.slice(filename.lastIndexOf(".")); //.nfo
+      const team =  file.split("-")[1];//
+      var moment = require('moment');
+      const uploadDate = moment().format('DD/MM/YYYY h:mm:ss');
+      const section = file.split('-')[0];
+      const section2 = section.slice(section.lastIndexOf('.'));
+
       firebase
         .storage()
         .ref("files/" + file + "" + ext)
@@ -82,7 +89,12 @@ export default {
           firebase
             .database()
             .ref("files")
-            .push({ name: fileData.metadata.name })
+            .push({
+              name: fileData.metadata.name,
+              team: team,
+              date: uploadDate,
+              section: section2
+            })
             .then(res => {
               this.operation = false;
             })
